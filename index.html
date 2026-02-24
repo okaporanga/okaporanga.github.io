@@ -1,246 +1,238 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="Content-Language" content="pt-br">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Okaporanga - Vida Digital</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Okaporanga - Vida Digital" />
-	<meta name="keywords" content="Sites, Apps, Android, iOS, Consultoria" />
-	<meta name="author" content="Okaporanga" />
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Okaporanga | Engenharia de IA Generativa e Software de Elite</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesque:wght@500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --navy: #001F3F;
+            --cyan: #00FFFF;
+            --cloud: #F0F0F0;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: var(--cloud); color: var(--navy); }
+        h1, h2, h3 { font-family: 'Space Grotesque', sans-serif; }
+       .mono { font-family: 'JetBrains Mono', monospace; }
+       .bg-navy { background-color: var(--navy); }
+       .text-cyan { color: var(--cyan); }
+       .border-cyan { border-color: var(--cyan); }
+       .btn-primary { background-color: var(--cyan); color: var(--navy); transition: all 0.3s ease; }
+       .btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3); }
+       .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+       .hero-gradient { background: radial-gradient(circle at top right, #003366, #001F3F); }
+    </style>
+</head>
+<body>
 
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content="Okaporanga - Vida Digital"/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content="okaporanga.com.br"/>
-	<meta property="og:description" content="Desenvolvimento de Sites, Apps e Software"/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
-	<!-- Google Tag Manager -->
-	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-MQMFKVC');</script>
-	<!-- End Google Tag Manager -->
+    <nav class="fixed w-full z-50 glass py-4 px-6 flex justify-between items-center border-b border-white/10">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-cyan-400 rounded-sm flex items-center justify-center">
+                <span class="text-navy font-bold text-xl">O</span>
+            </div>
+            <span class="text-white font-bold tracking-tighter text-xl uppercase">Okaporanga</span>
+        </div>
+        <div class="hidden md:flex gap-8 text-white/80 text-sm font-medium uppercase tracking-widest">
+            <a href="#solucoes" class="hover:text-cyan-400">Soluções</a>
+            <a href="#seguranca" class="hover:text-cyan-400">Segurança</a>
+            <a href="#roi" class="hover:text-cyan-400">ROI</a>
+            <a href="#sobre" class="hover:text-cyan-400">Sobre</a>
+        </div>
+        <a href="#contato" class="btn-primary px-5 py-2 rounded-none text-xs font-bold uppercase tracking-tighter">
+            Diagnóstico de IA
+        </a>
+    </nav>
 
-	<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400, 900" rel="stylesheet"> -->
-	
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
-	<!-- Themify Icons-->
-	<link rel="stylesheet" href="css/themify-icons.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="css/magnific-popup.css">
-	<!-- Owl Carousel  -->
-	<link rel="stylesheet" href="css/owl.carousel.min.css">
-	<link rel="stylesheet" href="css/owl.theme.default.min.css">
-	<!-- Flexslider -->
-	<link rel="stylesheet" href="css/flexslider.css">
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
+    <header class="hero-gradient min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20">
+        <div class="mono text-cyan text-xs mb-4 tracking-[0.3em] uppercase">Enterprise AI & Software Engineering</div>
+        <h1 class="text-white text-5xl md:text-7xl font-bold max-w-5xl leading-tight mb-6">
+            Engenharia de IA Generativa com Foco em <span class="text-cyan">ROI</span> e Segurança Absoluta.
+        </h1>
+        <p class="text-white/60 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
+            Projetamos soluções de software únicas, moldadas para os desafios críticos de empresas que não aceitam compromissos entre inovação e proteção de dados.
+        </p>
+        <div class="flex flex-col md:flex-row gap-4">
+            <button class="btn-primary px-10 py-4 font-bold uppercase text-sm">Iniciar Projeto Único</button>
+            <button class="border border-white/20 text-white px-10 py-4 font-bold uppercase text-sm hover:bg-white/5">Explorar Framework</button>
+        </div>
+        <div class="mt-20 flex gap-8 opacity-30 grayscale">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/AWS_logo.svg" class="h-6" alt="AWS">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Microsoft_Azure_Logo.svg" class="h-6" alt="Azure">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_Logo.svg" class="h-6" alt="GCP">
+        </div>
+    </header>
 
-	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+    <section id="solucoes" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <span class="mono text-cyan bg-navy px-3 py-1 text-xs">Vertical AI</span>
+                <h2 class="text-4xl font-bold mt-6 mb-8">Agentes de IA e Automação de Próxima Geração</h2>
+                <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                    Diferente de chatbots genéricos, construímos sistemas orquestrados de agentes inteligentes que planejam, interagem com suas APIs e tomam decisões baseadas em objetivos de negócio complexos.
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-3">
+                        <i data-lucide="shield-check" class="text-cyan bg-navy p-1 rounded-full"></i>
+                        <span class="font-semibold">Modelos Fine-tuned + RAG para dados proprietários.</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i data-lucide="zap" class="text-cyan bg-navy p-1 rounded-full"></i>
+                        <span class="font-semibold">Automação de fluxos com Human-in-the-loop.</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-white p-8 border-b-4 border-navy shadow-sm">
+                    <i data-lucide="layout" class="mb-4 opacity-40"></i>
+                    <h3 class="font-bold mb-2">Web & Cloud</h3>
+                    <p class="text-xs text-slate-500">Sistemas escaláveis com arquitetura composível.</p>
+                </div>
+                <div class="bg-navy p-8 text-white shadow-xl">
+                    <i data-lucide="smartphone" class="mb-4 text-cyan"></i>
+                    <h3 class="font-bold mb-2">Mobile Nativo</h3>
+                    <p class="text-xs text-cyan/60">Apps iOS/Android com IA integrada localmente.</p>
+                </div>
+                <div class="bg-white p-8 border-b-4 border-navy shadow-sm">
+                    <i data-lucide="database" class="mb-4 opacity-40"></i>
+                    <h3 class="font-bold mb-2">Data Ops</h3>
+                    <p class="text-xs text-slate-500">Pipelines de dados prontos para treinamento.</p>
+                </div>
+                <div class="bg-white p-8 border-b-4 border-navy shadow-sm">
+                    <i data-lucide="lock" class="mb-4 opacity-40"></i>
+                    <h3 class="font-bold mb-2">Cybersec</h3>
+                    <p class="text-xs text-slate-500">Proteção ativa contra injeção de prompts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	</head>
-	<body>
-	<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQMFKVC"
-	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-	<!-- End Google Tag Manager (noscript) -->
-	<div class="gtco-loader"></div>
-	
-	<div id="page">
-	<nav class="gtco-nav" role="navigation">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-2 col-xs-12">
-					<div id="gtco-logo"><a href="index.html">Oka<em>poranga</em></a></div>
-				</div>
-				<div class="col-xs-10 text-right menu-1 main-nav">
-					<ul>
-						<li class="active"><a href="#" data-nav-section="home">Início</a></li>
-						<li><a href="#" data-nav-section="about">Sobre</a></li>
-						<li><a href="#" data-nav-section="practice-areas">Serviços</a></li>
-						<li class="btn-cta"><a href="#" data-nav-section="contact"><span>Diga Oi</span></a></li>
-					</ul>
-				</div>
-			</div>
-			
-		</div>
-	</nav>
+    <section id="seguranca" class="bg-navy py-24 px-6 text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Segurança de Elite por Padrão</h2>
+                <p class="text-cyan/80 mono text-sm tracking-widest uppercase">Proteção de código, aplicação e ambiente</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass p-10">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <i data-lucide="server" class="text-cyan w-5"></i> Isolamento VPC
+                    </h3>
+                    <p class="text-white/60 text-sm leading-relaxed">
+                        Implementação em nuvem privada e Endpoints Privados. Seus dados nunca atravessam a internet pública.[7, 8]
+                    </p>
+                </div>
+                <div class="glass p-10 border-cyan/30">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <i data-lucide="check-circle" class="text-cyan w-5"></i> OWASP LLM
+                    </h3>
+                    <p class="text-white/60 text-sm leading-relaxed">
+                        Defesa ativa contra as 10 maiores vulnerabilidades de IA, incluindo Prompt Injection e Data Leakage.[4]
+                    </p>
+                </div>
+                <div class="glass p-10">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <i data-lucide="fingerprint" class="text-cyan w-5"></i> Compliance LGPD
+                    </h3>
+                    <p class="text-white/60 text-sm leading-relaxed">
+                        Privacidade por design com anonimização de PII e governança completa de dados em conformidade com a Lei 13.709/2018.[6, 9]
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-	<section id="gtco-hero" class="gtco-cover" style="background-image: url(images/kayaking.jpg);"  data-section="home"  data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 col-md-offset-0 text-center">
-					<div class="display-t">
-						<div class="display-tc">
-							<h1 class="animate-box" data-animate-effect="fadeIn">Nós falamos a sua língua</h1>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	<section id="gtco-about" data-section="about">
-		<div class="container">
-			<div class="row row-pb-md">
-				<div class="col-md-8 col-md-offset-2 heading animate-box" data-animate-effect="fadeIn">
-					<h1>Tecnologia para Pessoas</h1>
-					<p class="sub"></p>
-					<p class="subtle-text animate-box" data-animate-effect="fadeIn">Okaporanga</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 col-md-pull-1 animate-box" data-animate-effect="fadeInLeft">
-					<div class="img-shadow">
-						<img src="images/webdesign.jpg" class="img-responsive" alt="Ilustração de um computador exibindo um site ou aplicação web">
-					</div>
-				</div>
-				<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-					<h2 class="heading-colored">Casa Bonita</h2>
-					<p><b>Como anda a sua casa?</b> Seja um site, app ou software toda empresa tem um produto que a identifica. 
-						Esse é o nosso objetivo, fazer uma Casa Bonita para o seu negócio seja ele um app Android ou iOS, site responsivo ou software, 
-						queremos traduzir tecnologia em força pra te fazer chegar lá. Vamos juntos, vem pra <b>Oka</b> ;)
-					</p>
-					<p><a href="#" class="read-more">Saiba Mais<i class="icon-chevron-right"></i></a></p>
-				</div>
-			</div>
-		</div>
-	</section>
+    <section id="roi" class="py-24 px-6 max-w-7xl mx-auto text-center">
+        <span class="mono text-navy/40 text-xs">Métricas de Impacto</span>
+        <h2 class="text-4xl font-bold mt-4 mb-16">O Paradoxo do ROI Resolvido</h2>
+        <div class="grid md:grid-cols-4 gap-4">
+            <div class="p-8 border border-navy/10 rounded-xl">
+                <div class="text-4xl font-bold mb-2">35%</div>
+                <div class="text-xs mono uppercase opacity-60">Redução de Custos Suporte</div>
+            </div>
+            <div class="p-8 bg-cyan/10 border border-cyan/30 rounded-xl">
+                <div class="text-4xl font-bold mb-2">40%</div>
+                <div class="text-xs mono uppercase opacity-60">Aceleração Diagnóstico</div>
+            </div>
+            <div class="p-8 border border-navy/10 rounded-xl">
+                <div class="text-4xl font-bold mb-2">60%</div>
+                <div class="text-xs mono uppercase opacity-60">Menos Erros Operacionais</div>
+            </div>
+            <div class="p-8 border border-navy/10 rounded-xl">
+                <div class="text-4xl font-bold mb-2">18m</div>
+                <div class="text-xs mono uppercase opacity-60">Payback Médio (PBP)</div>
+            </div>
+        </div>
+        <div class="mt-16 glass bg-navy p-12 text-left max-w-4xl mx-auto flex flex-col md:flex-row gap-10 items-center">
+            <div class="text-white">
+                <h3 class="text-2xl font-bold mb-4">Calculamos o valor real da sua inovação.</h3>
+                <p class="text-white/60 mb-6 text-sm">Utilizamos frameworks de benefícios Hard e Soft para garantir que cada linha de código contribua para a linha final do seu balanço financeiro.[10, 11]</p>
+                <button class="btn-primary px-8 py-3 font-bold text-xs uppercase">Baixar Business Case</button>
+            </div>
+            <div class="text-cyan mono text-sm bg-black/30 p-6 rounded-lg border border-white/10">
+                ROI = ((B_hard + B_soft) - C) / C
+            </div>
+        </div>
+    </section>
 
-	<section id="gtco-practice-areas" data-section="practice-areas">
-		<div class="container">
-			<div class="row row-pb-md">
-				<div class="col-md-8 col-md-offset-2 heading animate-box" data-animate-effect="fadeIn">
-					<h1>Serviços</h1>
-					<p class="sub">Buscamos traduzir as necessidades e através de uma abordagem simples prover soluções de gente para gente.</p>
-					<p class="subtle-text animate-box" data-animate-effect="fadeIn">Serviços</span></p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="gtco-practice-area-item animate-box">
-						<div class="gtco-icon">
-							<img src="images/android_icon.svg" alt="Ícone do Android" width="80px" height="80px"/>
-						</div>
-						<div class="gtco-copy">
-							<h3>Android</h3>
-							<p>Dados do IDC 2016/2017 indicam que 93,2% dos dispositivos móveis no Brasil são Android. Se a experiência na plataforma é decisiva para o seu negócio uma aplicação nativa certamente é uma boa pedida. Afinal, são mais de 47 milhões de potenciais clientes.</p>
-						</div>
-					</div>
-					<div class="gtco-practice-area-item animate-box">
-						<div class="gtco-icon">
-							<img src="images/internet_icon.svg" alt="Ícone do globo representando a internet" width="80px" height="80px"/>
-						</div>
-						<div class="gtco-copy">
-							<h3>Website</h3>
-							<p>A presença na internet é algo fundamental para qualquer empresa hoje em dia, um site e uma página nas principais redes sociais formam o kit básico para sua empresa alcançar um mercado que em 2016 já somava 116 milhões de pessoas com acesso à internet.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-						<div class="gtco-practice-area-item animate-box">
-							<div class="gtco-icon">
-								<img src="images/apple_icon.svg" alt="Ícone da Apple iOS" width="80px" height="80px"/>
-							</div>
-							<div class="gtco-copy">
-								<h3>iOS</h3>
-								<p>Apesar de uma participação pequena no mercado nacional, a plataforma iOS não pode ser ignorada. Usuários habituados a pagar por serviços e com um poder aquisitivo maior são bons motivos para se escolher uma aplicação nativa e entregar a melhor experiência possível ao seu futuro cliente.</p>
-							</div>
-						</div>
-						<div class="gtco-practice-area-item animate-box">
-							<div class="gtco-icon">
-								<img src="images/windows_icon.svg" alt="Ícone do Windows" width="80px" height="80px"/>
-							</div>
-							<div class="gtco-copy">
-								<h3>Software WEB</h3>
-								<p>Se você precisa de abrangência e agilidade no lançamento de um produto, essa é sua escolha. Uma aplicação web hoje possui um menor custo de desenvolvimento, além de controle absoluto do código fonte e agilidade na atualização.</p>
-							</div>
-						</div>
-				</div>
-			</div>
-		</div>
-	</section>
+    <footer id="contato" class="relative bg-navy pt-24 pb-12 px-6 text-white border-t border-white/5" style="background: linear-gradient(rgba(0, 31, 63, 0.77), rgba(0, 31, 63, 0.88)), url('images/kayaking.jpg') center/cover no-repeat fixed;">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 mb-20">
+            <div>
+                <h2 class="text-5xl font-bold mb-8">Você veio até aqui, nós te levaremos até <span class="text-cyan underline">lá</span>.</h2>
+                <p class="text-white/50 text-lg mb-12">Estamos prontos para transformar sua infraestrutura de software em um motor de inteligência segura.</p>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <i data-lucide="mail" class="text-cyan"></i> <span>contato@okaporanga.com.br</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <i data-lucide="map-pin" class="text-cyan"></i> <span>Engenharia de Software de Alta Segurança</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-10 rounded-none shadow-2xl">
+                <form class="space-y-6">
+                    <div>
+                        <label class="block text-navy text-xs font-bold uppercase mb-2">Nome Completo</label>
+                        <input type="text" class="w-full border-b-2 border-navy/10 py-3 focus:outline-none focus:border-cyan text-navy">
+                    </div>
+                    <div>
+                        <label class="block text-navy text-xs font-bold uppercase mb-2">E-mail Corporativo</label>
+                        <input type="email" class="w-full border-b-2 border-navy/10 py-3 focus:outline-none focus:border-cyan text-navy">
+                    </div>
+                    <div>
+                        <label class="block text-navy text-xs font-bold uppercase mb-2">Desafio de Negócio (IA/Software)</label>
+                        <textarea class="w-full border-b-2 border-navy/10 py-3 focus:outline-none focus:border-cyan text-navy" rows="4"></textarea>
+                    </div>
+                    <button class="w-full bg-navy text-white py-5 font-bold uppercase tracking-widest hover:bg-black transition-colors">Enviar Solicitação</button>
+                </form>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-xs text-white/30 mono uppercase tracking-widest">
+                © 2026 Okaporanga AI & Software Excellence. Todos os direitos reservados.
+            </div>
+            <div class="flex gap-8 text-xs text-white/50 uppercase font-bold tracking-tighter">
+                <a href="#" class="hover:text-cyan">Privacidade</a>
+                <a href="#" class="hover:text-cyan">Ética em IA</a>
+                <a href="#" class="hover:text-cyan">Compliance</a>
+            </div>
+        </div>
+    </footer>
 
-	<section id="gtco-contact" data-section="contact">
-		<div class="container">
-			<div class="row row-pb-md">
-				<div class="col-md-8 col-md-offset-2 heading animate-box" data-animate-effect="fadeIn">
-					<p class="subtle-text animate-box" data-animate-effect="fadeIn">fale</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4 animate-box">
-					<div class="gtco-contact-info">
-						<ul>
-							<li class="address">São Paulo, Brasil</li>
-							<li class="email"><a href="mailto:digaoi@okaporanga.com.br">digaoi@okaporanga.com.br</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	<footer id="gtco-footer" role="contentinfo">
-		<div class="container">
-			
-			<div class="row copyright">
-				<div class="col-md-12">
-					<p class="pull-left">
-						<small class="block">&copy; 2018 Okaporanga. Todos os direitos reservados.</small> 
-					</p>
-					<p class="pull-right">
-						<ul class="gtco-social-icons pull-right">
-							<!-- <li><a href="#"><i class="icon-twitter"></i></a></li>
-							<li><a href="#"><i class="icon-facebook"></i></a></li>
-							<li><a href="#"><i class="icon-linkedin"></i></a></li> -->
-						</ul>
-					</p>
-				</div>
-			</div>
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
 
-		</div>
-	</footer>
-	</div>
-
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-	</div>
-	
-	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Stellar -->
-	<script src="js/jquery.stellar.min.js"></script>
-	<!-- Magnific Popup -->
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/magnific-popup-options.js"></script>
-	<!-- Main -->
-	<script src="js/main.js"></script>
-
-	</body>
+        // Simple smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
 </html>
-
