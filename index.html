@@ -216,44 +216,55 @@
                     <p class="text-corp-muted mt-4">Simule como a eficiência da nossa IA Generativa impacta sua operação.</p>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                <div class="bg-white rounded-2xl shadow-xl border border-brand-border overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3">
+                    
                     <!-- Controls -->
-                    <div class="lg:col-span-4 bg-corp-deep text-white p-8 rounded-3xl flex flex-col justify-between">
-                        <div>
-                            <h4 class="text-xl font-bold mb-8">Ajuste seu cenário</h4>
-                            
-                            <div class="mb-10">
-                                <label class="block text-xs font-bold text-slate-400 uppercase mb-3">Complexidade do Projeto</label>
-                                <input type="range" id="complexitySlider" min="1" max="5" value="3" class="w-full h-1 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-corp-accent">
-                                <div class="flex justify-between text-[10px] mt-2 font-mono text-slate-500">
-                                    <span>MVP</span>
-                                    <span>ENTERPRISE</span>
-                                </div>
-                            </div>
-
-                            <div class="mb-10">
-                                <label class="block text-xs font-bold text-slate-400 uppercase mb-3">Interações de IA/Mês</label>
-                                <input type="range" id="iaVolumeSlider" min="100" max="10000" value="5000" class="w-full h-1 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-corp-accent">
-                                <div class="flex justify-between text-[10px] mt-2 font-mono text-slate-500">
-                                    <span>100</span>
-                                    <span>10.000</span>
-                                </div>
+                    <div class="p-8 bg-stone-100 border-r border-brand-border">
+                        <h3 class="font-bold text-brand-text mb-6 flex items-center">
+                            <span class="mr-2">🎛️</span> Parâmetros do Projeto
+                        </h3>
+                        
+                        <div class="mb-6">
+                            <label class="block text-xs font-bold text-brand-muted uppercase mb-2">Tamanho da Equipe</label>
+                            <input type="range" id="teamSize" min="5" max="100" value="20" class="w-full h-2 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-brand-accent">
+                            <div class="flex justify-between text-xs text-brand-secondary mt-1">
+                                <span>5 pessoas</span>
+                                <span id="teamSizeVal" class="font-bold text-brand-accent">20</span>
+                                <span>100 pessoas</span>
                             </div>
                         </div>
 
-                        <div class="p-6 rounded-2xl bg-slate-800 border border-slate-700">
-                            <span class="text-xs text-slate-400 block mb-1">Redução de Custo Estimada</span>
-                            <span id="savingsDisplay" class="text-3xl font-bold text-corp-accent">R$ 145.000 / ano</span>
+                        <div class="mb-6">
+                            <label class="block text-xs font-bold text-brand-muted uppercase mb-2">Processos Automatizáveis (%)</label>
+                            <input type="range" id="automationLevel" min="10" max="90" value="40" class="w-full h-2 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-brand-accent">
+                            <div class="flex justify-between text-xs text-brand-secondary mt-1">
+                                <span>10%</span>
+                                <span id="autoLevelVal" class="font-bold text-brand-accent">40%</span>
+                                <span>90%</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 p-4 bg-white rounded-lg border border-brand-border">
+                            <div class="text-sm text-brand-muted mb-1">Economia Estimada/Ano</div>
+                            <div id="roiValue" class="text-2xl font-serif font-bold text-green-700">R$ 384.000</div>
+                            <div class="text-xs text-brand-secondary mt-2 leading-tight">
+                                *Baseado em média salarial de mercado e recuperação de horas produtivas.
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Chart Display -->
-                    <div class="lg:col-span-8 p-8 rounded-3xl bg-corp-surface border border-corp-border">
-                        <div class="chart-container" style="height: 400px; max-height: 450px;">
-                            <canvas id="roiBarChart"></canvas>
+                    <!-- Visualization -->
+                    <div class="col-span-2 p-8 flex flex-col justify-center">
+                        <div class="chart-container">
+                            <canvas id="roiChart"></canvas>
                         </div>
+                        <p class="text-center text-sm text-brand-secondary mt-4">
+                            Comparativo: Software Tradicional vs. <span class="text-brand-accent font-bold">Okaporanga AI-Enhanced</span>
+                        </p>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
 
@@ -297,6 +308,20 @@
 
     <!-- Logic -->
     <script>
+        const state = {
+            teamSize: 20,
+            automationLevel: 40,
+            avgSalary: 8000, // Estimativa de custo mensal por funcionário
+            radarMode: 'standard' // 'standard' or 'complex'
+        };
+
+        // DOM Elements
+        const teamSizeSlider = document.getElementById('teamSize');
+        const teamSizeVal = document.getElementById('teamSizeVal');
+        const autoLevelSlider = document.getElementById('automationLevel');
+        const autoLevelVal = document.getElementById('autoLevelVal');
+        const roiDisplay = document.getElementById('roiValue');
+
         // Smooth Scroll
         function scrollToSection(id) {
             document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
@@ -348,65 +373,104 @@
         });
 
         // BAR CHART: ROI SIMULATOR
-        const ctxBar = document.getElementById('roiBarChart').getContext('2d');
-        const roiChart = new Chart(ctxBar, {
-            type: 'bar',
-            data: {
-                labels: ['Redução de Erros', 'Velocidade de Entrega', 'Engajamento do Cliente', 'Eficiência Operacional'],
-                datasets: [
-                    {
-                        label: 'Desenvolvimento Legado',
-                        data: [40, 45, 50, 55],
-                        backgroundColor: '#94A3B8',
-                        borderRadius: 8
-                    },
-                    {
-                        label: 'Okaporanga AI-Secure',
-                        data: [95, 98, 92, 94],
-                        backgroundColor: '#1E40AF',
-                        borderRadius: 8
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { position: 'top' },
-                    tooltip: { mode: 'index', intersect: false }
-                },
-                scales: {
-                    x: { grid: { display: false } },
-                    y: { beginAtZero: true, max: 100, title: { display: true, text: 'Índice de Performance (%)' } }
-                }
-            }
-        });
+       let roiChartInstance = null;
 
-        // Interaction Logic
-        const complexitySlider = document.getElementById('complexitySlider');
-        const iaVolumeSlider = document.getElementById('iaVolumeSlider');
-        const savingsDisplay = document.getElementById('savingsDisplay');
-
-        function updateSimulation() {
-            const complexity = parseInt(complexitySlider.value);
-            const volume = parseInt(iaVolumeSlider.value);
+        function calculateROI() {
+            // Formula Simplificada: 
+            // Custo Total Equipe = TeamSize * AvgSalary * 12
+            // Ganho de Eficiência = Custo Total * (AutomationLevel * 0.4 efficiency_factor)
+            const annualCost = state.teamSize * state.avgSalary * 12;
+            const savings = annualCost * (state.automationLevel / 100) * 0.4; // 0.4 is the efficiency factor of AI
             
-            // Formula fictícia para demonstrar interatividade
-            const baseFactor = 50000;
-            const savings = (complexity * 25000) + (volume * 15);
-            
-            savingsDisplay.innerText = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(savings) + " / ano";
-            
-            // Update Bar Chart subtly based on interactions
-            roiChart.data.datasets[1].data[3] = 70 + (complexity * 5);
-            roiChart.update();
+            return Math.floor(savings);
         }
 
-        complexitySlider.addEventListener('input', updateSimulation);
-        iaVolumeSlider.addEventListener('input', updateSimulation);
+        function updateROIDisplay() {
+            const savings = calculateROI();
+            roiDisplay.innerText = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(savings);
+            
+            // Update Chart Data
+            const baseEfficiency = 100; // Baseline
+            const newEfficiency = 100 + (state.automationLevel * 0.8); // Visual representation index
 
-        // Run once
-        updateSimulation();
+            roiChartInstance.data.datasets[0].data = [baseEfficiency, baseEfficiency]; // Traditional
+            roiChartInstance.data.datasets[1].data = [baseEfficiency, newEfficiency]; // Okaporanga
+            roiChartInstance.update();
+        }
+
+        function initRoiChart() {
+            const ctx = document.getElementById('roiChart').getContext('2d');
+            
+            const data = {
+                labels: ['Capacidade Atual', 'Capacidade Projetada'],
+                datasets: [
+                    {
+                        label: 'Software Tradicional',
+                        data: [100, 100],
+                        backgroundColor: '#E7E5E4',
+                        borderRadius: 4,
+                        barPercentage: 0.6
+                    },
+                    {
+                        label: 'Com Soluções Okaporanga',
+                        data: [100, 130],
+                        backgroundColor: '#D97706',
+                        borderRadius: 4,
+                        barPercentage: 0.6
+                    }
+                ]
+            };
+
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.raw + ' pts de Índice';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { display: false },
+                            display: false // Hide axis for cleaner UI
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            };
+
+            roiChartInstance = new Chart(ctx, config);
+        }
+
+        // Event Listeners
+        teamSizeSlider.addEventListener('input', (e) => {
+            state.teamSize = parseInt(e.target.value);
+            teamSizeVal.innerText = state.teamSize;
+            updateROIDisplay();
+        });
+
+        autoLevelSlider.addEventListener('input', (e) => {
+            state.automationLevel = parseInt(e.target.value);
+            autoLevelVal.innerText = e.target.value + '%';
+            updateROIDisplay();
+        });
+
+        // Initialize Everything on Load
+        window.addEventListener('load', () => {
+            initRoiChart();
+            updateROIDisplay(); // Initial calc
+        });
 
     </script>
 </body>
