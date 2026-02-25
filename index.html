@@ -1,234 +1,413 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Okaporanga | Engenharia de IA Generativa e Software de Elite</title>
+    <title>Okaporanga | Engenharia de Software, IA & Segurança</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesque:wght@500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        :root {
-            --navy: #001F3F;
-            --cyan: #00FFFF;
-            --cloud: #F0F0F0;
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Fonts: Inter for Clean Corp feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        corp: {
+                            deep: '#0F172A',     /* Navy - Segurança */
+                            primary: '#1E40AF',   /* Blue - Confiabilidade */
+                            accent: '#EA580C',    /* Orange - Energia/IA */
+                            surface: '#F8FAFC',   /* Light Gray/Blue tint */
+                            text: '#1E293B',      /* Slate 800 */
+                            muted: '#64748B',     /* Slate 500 */
+                            border: '#E2E8F0'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
         }
-        body { font-family: 'Inter', sans-serif; background-color: var(--cloud); color: var(--navy); }
-        h1, h2, h3 { font-family: 'Space Grotesque', sans-serif; }
-       .mono { font-family: 'JetBrains Mono', monospace; }
-       .bg-navy { background-color: var(--navy); }
-       .text-cyan { color: var(--cyan); }
-       .border-cyan { border-color: var(--cyan); }
-       .btn-primary { background-color: var(--cyan); color: var(--navy); transition: all 0.3s ease; }
-       .btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3); }
-       .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-       .hero-gradient { background: radial-gradient(circle at top right, #003366, #001F3F); }
+    </script>
+
+    <style>
+        body {
+            background-color: #F8FAFC;
+            color: #1E293B;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin: auto;
+            height: 320px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #1E40AF 0%, #EA580C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-primary {
+            background: #1E40AF;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: #1e3a8a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(30, 64, 175, 0.3);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #EA580C;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        header {
+            background: linear-gradient(rgba(0,31,63,0.7), rgba(0,31,63,0.7)), url('images/kayaking.jpg') center/cover no-repeat;
+        }
     </style>
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
 
-    <nav class="fixed w-full z-50 glass py-4 px-6 flex justify-between items-center border-b border-white/10">
-        <div class="flex items-center">
-            <span class="text-white text-xl tracking-tighter"><strong class="font-bold">Oka</strong><span class="font-light">poranga</span></span>
+    <!-- Header -->
+    <nav class="fixed w-full z-50 glass-card border-b border-corp-border">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-corp-primary rounded flex items-center justify-center text-white font-bold text-lg">O</div>
+                    <span class="text-2xl font-extrabold tracking-tight text-corp-deep uppercase">Okaporanga</span>
+                </div>
+                <div class="hidden md:flex space-x-10 items-center">
+                    <button onclick="scrollToSection('solucao')" class="nav-link text-sm font-semibold text-corp-text">Nossa Solução</button>
+                    <button onclick="scrollToSection('seguranca')" class="nav-link text-sm font-semibold text-corp-text">Segurança</button>
+                    <button onclick="scrollToSection('roi')" class="nav-link text-sm font-semibold text-corp-text">ROI & IA</button>
+                    <button onclick="scrollToSection('contato')" class="bg-corp-accent text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-orange-700 transition-colors">Falar com Consultor</button>
+                </div>
+            </div>
         </div>
-        <div class="hidden md:flex gap-8 text-white/80 text-sm font-medium uppercase tracking-widest">
-            <a href="#solucoes" class="hover:text-cyan-400">Soluções</a>
-            <a href="#seguranca" class="hover:text-cyan-400">Segurança</a>
-            <a href="#roi" class="hover:text-cyan-400">ROI</a>
-            <a href="#sobre" class="hover:text-cyan-400">Sobre</a>
-        </div>
-        <a href="#contato" class="btn-primary px-5 py-2 rounded-none text-xs font-bold uppercase tracking-tighter">
-            Diagnóstico de IA
-        </a>
     </nav>
 
-    <header class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20" style="background: linear-gradient(rgba(0, 31, 63, 0.77), rgba(0, 31, 63, 0.88)), url('images/kayaking.jpg') center/cover no-repeat fixed;">
-        <h1 class="text-white text-5xl md:text-7xl font-bold max-w-5xl leading-tight mb-6" style="font-family: 'Space Grotesque', sans-serif;">
-            Seu negócio chegou longe. Nossa inteligência leva você ao próximo <span class="text-cyan">resultado</span>.
-        </h1>
-        <p class="text-white/60 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed">
-            Projetamos soluções de software únicas, moldadas para os desafios críticos de empresas que não aceitam compromissos entre inovação e proteção de dados.
-        </p>
-        <div class="flex flex-col md:flex-row gap-4">
-            <button class="btn-primary px-10 py-4 font-bold uppercase text-sm">Iniciar Projeto Único</button>
-            <button class="border border-white/20 text-white px-10 py-4 font-bold uppercase text-sm hover:bg-white/5">Explorar Framework</button>
-        </div>
-        <div class="mt-20 flex gap-8 opacity-30 grayscale">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/AWS_logo.svg" class="h-6" alt="AWS">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Microsoft_Azure_Logo.svg" class="h-6" alt="Azure">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Google_Cloud_Logo.svg" class="h-6" alt="GCP">
-        </div>
-    </header>
+    <main class="pt-20">
 
-    <section id="solucoes" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-                <span class="mono text-cyan bg-navy px-3 py-1 text-xs">Vertical AI</span>
-                <h2 class="text-4xl font-bold mt-6 mb-8">Agentes de IA e Automação de Próxima Geração</h2>
-                <p class="text-lg text-slate-600 mb-8 leading-relaxed">
-                    Diferente de chatbots genéricos, construímos sistemas orquestrados de agentes inteligentes que planejam, interagem com suas APIs e tomam decisões baseadas em objetivos de negócio complexos.
-                </p>
-                <ul class="space-y-4">
-                    <li class="flex items-center gap-3">
-                        <i data-lucide="shield-check" class="text-cyan bg-navy p-1 rounded-full"></i>
-                        <span class="font-semibold">Modelos Fine-tuned + RAG para dados proprietários.</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <i data-lucide="zap" class="text-cyan bg-navy p-1 rounded-full"></i>
-                        <span class="font-semibold">Automação de fluxos com Human-in-the-loop.</span>
-                    </li>
-                </ul>
+        <!-- HERO SECTION -->
+        <header class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20 hero-gradient" style="background: linear-gradient(rgba(0,31,63,0.7), rgba(0,31,63,0.7)), url('images/kayaking.jpg') center/cover no-repeat;">
+            <h1 class="text-white text-5xl md:text-7xl font-bold max-w-5xl leading-tight mb-6" style="font-family: 'Space Grotesque', sans-serif;">
+                Você construiu a visão.<br>
+                <span class="text-navy italic">Nós criamos o caminho.</span>
+            </h1>
+            <p class="text-white/60 text-xl max-w-2xl mx-auto mt-4">"Você veio até aqui, nós te levaremos até lá."</p>
+            <p class="text-white/80 text-base max-w-3xl mx-auto mt-4 mb-8">
+                Sabemos que sua empresa não é apenas números; é uma trajetória. Desenvolvemos <strong>software sob medida</strong> que integra IA Generativa não como um acessório, mas como um motor de eficiência, garantindo que inovação e segurança caminhem de mãos dadas.
+            </p>
+            <div class="mt-10 flex justify-center gap-4">
+                <button onclick="document.getElementById('equilibrio').scrollIntoView({behavior:'smooth'})" class="btn-primary px-8 py-3 rounded-lg font-medium">Entenda Nossa Abordagem</button>
+                <button onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})" class="border border-navy text-white px-8 py-3 rounded-lg font-medium">Fale Conosco</button>
             </div>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="bg-white p-8 border-b-4 border-navy shadow-sm">
-                    <i data-lucide="layout" class="mb-4 opacity-40"></i>
-                    <h3 class="font-bold mb-2">Web & Cloud</h3>
-                    <p class="text-xs text-slate-500">Sistemas escaláveis com arquitetura composível.</p>
-                </div>
-                <div class="bg-navy p-8 text-white shadow-xl">
-                    <i data-lucide="smartphone" class="mb-4 text-cyan"></i>
-                    <h3 class="font-bold mb-2">Mobile Nativo</h3>
-                    <p class="text-xs text-cyan/60">Apps iOS/Android com IA integrada localmente.</p>
-                </div>
-                <div class="bg-white p-8 border-b-4 border-navy shadow-sm">
-                    <i data-lucide="database" class="mb-4 opacity-40"></i>
-                    <h3 class="font-bold mb-2">Data Ops</h3>
-                    <p class="text-xs text-slate-500">Pipelines de dados prontos para treinamento.</p>
-                </div>
-                <div class="bg-white p-8 border-b-4 border-navy shadow-sm">
-                    <i data-lucide="lock" class="mb-4 opacity-40"></i>
-                    <h3 class="font-bold mb-2">Cybersec</h3>
-                    <p class="text-xs text-slate-500">Proteção ativa contra injeção de prompts.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </header>
 
-    <section id="seguranca" class="bg-navy py-24 px-6 text-white overflow-hidden">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4">Segurança de Elite por Padrão</h2>
-                <p class="text-cyan/80 mono text-sm tracking-widest uppercase">Proteção de código, aplicação e ambiente</p>
+        <!-- VALUE PILLARS -->
+        <section id="solucao" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center mb-16">
+                <h2 class="text-3xl font-bold text-corp-deep mb-4">A tríade da Engenharia Corporativa</h2>
+                <p class="text-corp-muted max-w-2xl mx-auto">Não somos apenas desenvolvedores; somos arquitetos de valor estratégico para negócios escaláveis.</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="glass p-10">
-                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                        <i data-lucide="server" class="text-cyan w-5"></i> Isolamento VPC
-                    </h3>
-                    <p class="text-white/60 text-sm leading-relaxed">
-                        Implementação em nuvem privada e Endpoints Privados. Seus dados nunca atravessam a internet pública.[7, 8]
+            
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="p-8 rounded-2xl border border-corp-border hover:border-corp-primary transition-all group">
+                    <div class="w-12 h-12 bg-blue-50 text-corp-primary rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-corp-primary group-hover:text-white transition-colors">🛡️</div>
+                    <h3 class="text-xl font-bold text-corp-deep mb-3">Segurança Inviolável</h3>
+                    <p class="text-corp-muted text-sm leading-relaxed">
+                        Implementamos as mais recentes técnicas de segurança de código e ambiente, garantindo que sua aplicação seja um forte, não um risco.
                     </p>
                 </div>
-                <div class="glass p-10 border-cyan/30">
-                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                        <i data-lucide="check-circle" class="text-cyan w-5"></i> OWASP LLM
-                    </h3>
-                    <p class="text-white/60 text-sm leading-relaxed">
-                        Defesa ativa contra as 10 maiores vulnerabilidades de IA, incluindo Prompt Injection e Data Leakage.[4]
+                <!-- Card 2 -->
+                <div class="p-8 rounded-2xl border border-corp-border hover:border-corp-accent transition-all group">
+                    <div class="w-12 h-12 bg-orange-50 text-corp-accent rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-corp-accent group-hover:text-white transition-colors">⚡</div>
+                    <h3 class="text-xl font-bold text-corp-deep mb-3">IA Generativa Única</h3>
+                    <p class="text-corp-muted text-sm leading-relaxed">
+                        Projetos moldados para sua necessidade real. Criamos IAs que entendem o seu contexto e agregam valor direto ao cliente final.
                     </p>
                 </div>
-                <div class="glass p-10">
-                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
-                        <i data-lucide="fingerprint" class="text-cyan w-5"></i> Compliance LGPD
-                    </h3>
-                    <p class="text-white/60 text-sm leading-relaxed">
-                        Privacidade por design com anonimização de PII e governança completa de dados em conformidade com a Lei 13.709/2018.[6, 9]
+                <!-- Card 3 -->
+                <div class="p-8 rounded-2xl border border-corp-border hover:border-corp-deep transition-all group">
+                    <div class="w-12 h-12 bg-slate-50 text-corp-deep rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-corp-deep group-hover:text-white transition-colors">📈</div>
+                    <h3 class="text-xl font-bold text-corp-deep mb-3">Foco Total em ROI</h3>
+                    <p class="text-corp-muted text-sm leading-relaxed">
+                        Todo projeto nasce com uma meta clara: retorno sobre investimento. Transformamos custo de TI em investimento estratégico.
                     </p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="roi" class="py-24 px-6 max-w-7xl mx-auto text-center">
-        <span class="mono text-navy/40 text-xs">Métricas de Impacto</span>
-        <h2 class="text-4xl font-bold mt-4 mb-16">O Paradoxo do ROI Resolvido</h2>
-        <div class="grid md:grid-cols-4 gap-4">
-            <div class="p-8 border border-navy/10 rounded-xl">
-                <div class="text-4xl font-bold mb-2">35%</div>
-                <div class="text-xs mono uppercase opacity-60">Redução de Custos Suporte</div>
-            </div>
-            <div class="p-8 bg-cyan/10 border border-cyan/30 rounded-xl">
-                <div class="text-4xl font-bold mb-2">40%</div>
-                <div class="text-xs mono uppercase opacity-60">Aceleração Diagnóstico</div>
-            </div>
-            <div class="p-8 border border-navy/10 rounded-xl">
-                <div class="text-4xl font-bold mb-2">60%</div>
-                <div class="text-xs mono uppercase opacity-60">Menos Erros Operacionais</div>
-            </div>
-            <div class="p-8 border border-navy/10 rounded-xl">
-                <div class="text-4xl font-bold mb-2">18m</div>
-                <div class="text-xs mono uppercase opacity-60">Payback Médio (PBP)</div>
-            </div>
-        </div>
-        <div class="mt-16 bg-navy p-12 text-left max-w-4xl mx-auto flex flex-col md:flex-row gap-10 items-center rounded-xl">
-            <div class="text-white">
-                <h3 class="text-2xl font-bold mb-4">Calculamos o valor real da sua inovação.</h3>
-                <p class="text-white/60 mb-6 text-sm">Utilizamos frameworks de benefícios Hard e Soft para garantir que cada linha de código contribua para a linha final do seu balanço financeiro.</p>
-                <button class="btn-primary px-8 py-3 font-bold text-xs uppercase">Baixar Business Case</button>
-            </div>
-            <div class="text-cyan mono text-sm bg-white/10 p-6 rounded-lg border border-white/10">
-                ROI = ((B_hard + B_soft) - C) / C
-            </div>
-        </div>
-    </section>
-
-    <footer id="contato" class="bg-navy pt-24 pb-12 px-6 text-white border-t border-white/5">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 mb-20">
-            <div>
-                <h2 class="text-5xl font-bold mb-8">Vamos construir o <span class="text-cyan">único</span>.</h2>
-                <p class="text-white/50 text-lg mb-12">Estamos prontos para transformar sua infraestrutura de software em um motor de inteligência segura.</p>
-                <div class="space-y-6">
-                    <div class="flex items-center gap-4">
-                        <i data-lucide="mail" class="text-cyan"></i> <span>contato@okaporanga.com.br</span>
+        <!-- SECURITY & INNOVATION COMPARISON (RADAR) -->
+        <section id="seguranca" class="py-24 bg-corp-surface">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-corp-accent font-bold text-sm tracking-widest uppercase mb-4 block">Segurança e Responsabilidade</span>
+                    <h2 class="text-4xl font-bold text-corp-deep mb-6">Inovação segura não é um oxímoro.</h2>
+                    <p class="text-corp-muted mb-8 text-lg">
+                        Muitas implementações de IA falham por serem inseguras ou genéricas. Na Okaporanga, utilizamos IA de forma responsável e protegida.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="mt-1 text-corp-primary mr-4">⬥</div>
+                            <div>
+                                <h4 class="font-bold text-corp-deep">Privacidade de Dados (LGPD+)</h4>
+                                <p class="text-sm text-corp-muted">Modelos que respeitam a soberania dos dados da sua empresa.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="mt-1 text-corp-primary mr-4">⬥</div>
+                            <div>
+                                <h4 class="font-bold text-corp-deep">Arquitetura de Defesa Profunda</h4>
+                                <p class="text-sm text-corp-muted">Segurança injetada na aplicação, no transporte e no armazenamento.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-4">
-                        <i data-lucide="map-pin" class="text-cyan"></i> <span>Engenharia de Software de Alta Segurança</span>
+                </div>
+                <div class="bg-white p-10 rounded-3xl shadow-xl border border-corp-border">
+                    <div class="text-center mb-6">
+                        <h3 class="font-bold text-corp-deep">Matriz de Confiabilidade</h3>
+                        <p class="text-xs text-corp-muted">Comparativo: Okaporanga vs. Desenvolvimento Padrão</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="radarChart"></canvas>
                     </div>
                 </div>
             </div>
-            <div class="bg-white p-10 rounded-none shadow-2xl">
-                <form class="space-y-6">
-                    <div>
-                        <label class="block text-navy text-xs font-bold uppercase mb-2">Nome Completo</label>
-                        <input type="text" class="w-full border-b-2 border-navy/10 py-3 focus:outline-none focus:border-cyan text-navy">
+        </section>
+
+        <!-- ROI SIMULATOR SECTION -->
+        <section id="roi" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-corp-deep">O Valor da Inteligência Própria</h2>
+                    <p class="text-corp-muted mt-4">Simule como a eficiência da nossa IA Generativa impacta sua operação.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                    <!-- Controls -->
+                    <div class="lg:col-span-4 bg-corp-deep text-white p-8 rounded-3xl flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xl font-bold mb-8">Ajuste seu cenário</h4>
+                            
+                            <div class="mb-10">
+                                <label class="block text-xs font-bold text-slate-400 uppercase mb-3">Complexidade do Projeto</label>
+                                <input type="range" id="complexitySlider" min="1" max="5" value="3" class="w-full h-1 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-corp-accent">
+                                <div class="flex justify-between text-[10px] mt-2 font-mono text-slate-500">
+                                    <span>MVP</span>
+                                    <span>ENTERPRISE</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-10">
+                                <label class="block text-xs font-bold text-slate-400 uppercase mb-3">Interações de IA/Mês</label>
+                                <input type="range" id="iaVolumeSlider" min="100" max="10000" value="5000" class="w-full h-1 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-corp-accent">
+                                <div class="flex justify-between text-[10px] mt-2 font-mono text-slate-500">
+                                    <span>100</span>
+                                    <span>10.000</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6 rounded-2xl bg-slate-800 border border-slate-700">
+                            <span class="text-xs text-slate-400 block mb-1">Redução de Custo Estimada</span>
+                            <span id="savingsDisplay" class="text-3xl font-bold text-corp-accent">R$ 145.000 / ano</span>
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-navy text-xs font-bold uppercase mb-2">E-mail Corporativo</label>
-                        <input type="email" class="w-full border-b-2 border-navy/10 py-3 focus:outline-none focus:border-cyan text-navy">
+
+                    <!-- Chart Display -->
+                    <div class="lg:col-span-8 p-8 rounded-3xl bg-corp-surface border border-corp-border">
+                        <div class="chart-container" style="height: 400px; max-height: 450px;">
+                            <canvas id="roiBarChart"></canvas>
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-navy text-xs font-bold uppercase mb-2">Desafio de Negócio (IA/Software)</label>
-                        <textarea class="w-full border-b-2 border-navy/10 py-3 focus:outline-none focus:border-cyan text-navy" rows="4"></textarea>
-                    </div>
-                    <button class="w-full bg-navy text-white py-5 font-bold uppercase tracking-widest hover:bg-black transition-colors">Enviar Solicitação</button>
-                </form>
+                </div>
             </div>
-        </div>
-        <div class="max-w-7xl mx-auto pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-xs text-white/30 mono uppercase tracking-widest">
-                © 2026 Okaporanga AI & Software Excellence. Todos os direitos reservados.
+        </section>
+
+        <!-- CTA SECTION -->
+        <section id="contato" class="py-24 bg-corp-deep relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="grid grid-cols-12 h-full">
+                    <div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div>
+                </div>
             </div>
-            <div class="flex gap-8 text-xs text-white/50 uppercase font-bold tracking-tighter">
-                <a href="#" class="hover:text-cyan">Privacidade</a>
-                <a href="#" class="hover:text-cyan">Ética em IA</a>
-                <a href="#" class="hover:text-cyan">Compliance</a>
+            <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center relative z-10">
+                <h2 class="text-4xl lg:text-5xl font-extrabold text-white mb-8">Pronto para elevar o padrão tecnológico do seu negócio?</h2>
+                <p class="text-blue-200 text-xl mb-12">Agende uma consultoria técnica com nossos especialistas em software e IA.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button class="bg-corp-accent hover:bg-orange-700 text-white px-10 py-5 rounded-xl font-bold text-lg transition-all transform hover:scale-105">
+                        Agendar Diagnóstico Gratuito
+                    </button>
+                    <button class="bg-transparent border-2 border-white text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-white hover:text-corp-deep transition-all">
+                        Ver Case Studies
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white py-12 border-t border-corp-border">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-2 mb-6 md:mb-0">
+                <div class="w-6 h-6 bg-corp-primary rounded flex items-center justify-center text-white font-bold text-xs">O</div>
+                <span class="text-lg font-bold text-corp-deep uppercase tracking-tighter">Okaporanga</span>
+            </div>
+            <p class="text-corp-muted text-sm">&copy; 2024 Okaporanga Engenharia. IA Responsável. Software Único.</p>
+            <div class="flex space-x-6 mt-6 md:mt-0 text-sm font-medium text-corp-text">
+                <a href="#" class="hover:text-corp-accent">Serviços</a>
+                <a href="#" class="hover:text-corp-accent">Segurança</a>
+                <a href="#" class="hover:text-corp-accent">Privacidade</a>
             </div>
         </div>
     </footer>
 
+    <!-- Logic -->
     <script>
-        // Initialize Icons
-        lucide.createIcons();
+        // Smooth Scroll
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
 
-        // Simple smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        // --- CHARTS ---
+
+        // RADAR CHART: Security vs Innovation
+        const ctxRadar = document.getElementById('radarChart').getContext('2d');
+        const radarChart = new Chart(ctxRadar, {
+            type: 'radar',
+            data: {
+                labels: ['Segurança', 'IA Generativa', 'Personalização', 'ROI', 'Escalabilidade', 'Proteção de Dados'],
+                datasets: [{
+                    label: 'Okaporanga',
+                    data: [98, 95, 95, 92, 90, 99],
+                    fill: true,
+                    backgroundColor: 'rgba(30, 64, 175, 0.2)',
+                    borderColor: '#1E40AF',
+                    pointBackgroundColor: '#1E40AF',
+                    pointBorderColor: '#fff',
+                }, {
+                    label: 'Mercado Padrão',
+                    data: [65, 50, 40, 60, 70, 55],
+                    fill: true,
+                    backgroundColor: 'rgba(234, 88, 12, 0.1)',
+                    borderColor: '#EA580C',
+                    pointBackgroundColor: '#EA580C',
+                    pointBorderColor: '#fff',
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: '#E2E8F0' },
+                        grid: { color: '#E2E8F0' },
+                        suggestedMin: 0,
+                        suggestedMax: 100,
+                        ticks: { display: false },
+                        pointLabels: { font: { size: 10, weight: '600' } }
+                    }
+                },
+                plugins: {
+                    legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } }
+                }
+            }
         });
+
+        // BAR CHART: ROI SIMULATOR
+        const ctxBar = document.getElementById('roiBarChart').getContext('2d');
+        const roiChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Redução de Erros', 'Velocidade de Entrega', 'Engajamento do Cliente', 'Eficiência Operacional'],
+                datasets: [
+                    {
+                        label: 'Desenvolvimento Legado',
+                        data: [40, 45, 50, 55],
+                        backgroundColor: '#94A3B8',
+                        borderRadius: 8
+                    },
+                    {
+                        label: 'Okaporanga AI-Secure',
+                        data: [95, 98, 92, 94],
+                        backgroundColor: '#1E40AF',
+                        borderRadius: 8
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: { mode: 'index', intersect: false }
+                },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: { beginAtZero: true, max: 100, title: { display: true, text: 'Índice de Performance (%)' } }
+                }
+            }
+        });
+
+        // Interaction Logic
+        const complexitySlider = document.getElementById('complexitySlider');
+        const iaVolumeSlider = document.getElementById('iaVolumeSlider');
+        const savingsDisplay = document.getElementById('savingsDisplay');
+
+        function updateSimulation() {
+            const complexity = parseInt(complexitySlider.value);
+            const volume = parseInt(iaVolumeSlider.value);
+            
+            // Formula fictícia para demonstrar interatividade
+            const baseFactor = 50000;
+            const savings = (complexity * 25000) + (volume * 15);
+            
+            savingsDisplay.innerText = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(savings) + " / ano";
+            
+            // Update Bar Chart subtly based on interactions
+            roiChart.data.datasets[1].data[3] = 70 + (complexity * 5);
+            roiChart.update();
+        }
+
+        complexitySlider.addEventListener('input', updateSimulation);
+        iaVolumeSlider.addEventListener('input', updateSimulation);
+
+        // Run once
+        updateSimulation();
+
     </script>
 </body>
 </html>
