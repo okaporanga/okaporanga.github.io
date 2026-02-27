@@ -3,99 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
     <title>Okaporanga | Engenharia de Software, IA & Segurança</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta name="description" content="Desenvolvemos software sob medida integrando IA Generativa e Segurança de alto nível. Transforme seu custo de TI em investimento estratégico focando em ROI.">
+    <meta name="keywords" content="Engenharia de software, IA Generativa, Segurança da Informação, Desenvolvimento sob medida, ROI em TI">
+    <meta name="author" content="Okaporanga Engenharia">
+    <link rel="canonical" href="https://www.okaporanga.com.br/">
 
-    <!-- Fonts: Inter for Clean Corp feel -->
+    <meta property="og:title" content="Okaporanga | Engenharia de Software e IA">
+    <meta property="og:description" content="Engenharia corporativa com Segurança Inviolável e IA Generativa Única.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.okaporanga.com.br/">
+    <meta property="og:image" content="https://www.okaporanga.com.br/images/social-share.jpg"> <!-- Sugestão: Crie esta imagem -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        corp: {
-                            deep: '#0F172A',     /* Navy - Segurança */
-                            primary: '#1E40AF',   /* Blue - Confiabilidade */
-                            accent: '#EA580C',    /* Orange - Energia/IA */
-                            surface: '#F8FAFC',   /* Light Gray/Blue tint */
-                            text: '#1E293B',      /* Slate 800 */
-                            muted: '#64748B',     /* Slate 500 */
-                            border: '#E2E8F0'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Okaporanga",
+      "url": "https://www.okaporanga.com.br",
+      "logo": "https://www.okaporanga.com.br/images/logo.png",
+      "description": "Desenvolvimento de software sob medida, integração de IA Generativa e Segurança.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Consultoria Técnica",
+        "availableLanguage": "Portuguese"
+      }
+    }
     </script>
-
-    <style>
-        body {
-            background-color: #F8FAFC;
-            color: #1E293B;
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 650px;
-            margin: auto;
-            height: 320px;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #1E40AF 0%, #EA580C 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .btn-primary {
-            background: #1E40AF;
-            transition: all 0.3s ease;
-        }
-        .btn-primary:hover {
-            background: #1e3a8a;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(30, 64, 175, 0.3);
-        }
-
-        .nav-link {
-            position: relative;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #EA580C;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        header {
-            background: linear-gradient(rgba(0,31,63,0.7), rgba(0,31,63,0.7)), url('images/kayaking.jpg') center/cover no-repeat;
-        }
-    </style>
+    <link href="css/style.css" rel="stylesheet">
 </head>
 <body class="flex flex-col min-h-screen">
 
@@ -104,14 +49,15 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center space-x-2">
-                    <div class="w-8 h-8 bg-corp-primary rounded flex items-center justify-center text-white font-bold text-lg">O</div>
-                    <span class="text-2xl font-extrabold tracking-tight text-corp-deep uppercase">Okaporanga</span>
+                    <a href="#" aria-label="Ir para a página inicial" class="text-2xl tracking-tight text-corp-primary font-bold">
+                        <span class="font-bold text-corp-accent">Oka</span>poranga
+                    </a>
                 </div>
                 <div class="hidden md:flex space-x-10 items-center">
-                    <button onclick="scrollToSection('solucao')" class="nav-link text-sm font-semibold text-corp-text">Nossa Solução</button>
-                    <button onclick="scrollToSection('seguranca')" class="nav-link text-sm font-semibold text-corp-text">Segurança</button>
-                    <button onclick="scrollToSection('roi')" class="nav-link text-sm font-semibold text-corp-text">ROI & IA</button>
-                    <button onclick="scrollToSection('contato')" class="bg-corp-accent text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-orange-700 transition-colors">Falar com Consultor</button>
+                    <a href="#solucao" class="nav-link text-sm font-semibold text-corp-text">Nossa Solução</a>
+                    <a href="#seguranca" class="nav-link text-sm font-semibold text-corp-text">Segurança</a>
+                    <a href="#roi" class="nav-link text-sm font-semibold text-corp-text">ROI & IA</a>
+                    <a href="#contato" class="bg-corp-accent text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-orange-700 transition-colors inline-block text-center">Falar com Consultor</a>
                 </div>
             </div>
         </div>
@@ -129,9 +75,9 @@
             <p class="text-white/80 text-base max-w-3xl mx-auto mt-4 mb-8">
                 Sabemos que sua empresa não é apenas números; é uma trajetória. Desenvolvemos <strong>software sob medida</strong> que integra IA Generativa não como um acessório, mas como um motor de eficiência, garantindo que inovação e segurança caminhem de mãos dadas.
             </p>
-            <div class="mt-10 flex justify-center gap-4">
-                <button onclick="document.getElementById('equilibrio').scrollIntoView({behavior:'smooth'})" class="btn-primary px-8 py-3 rounded-lg font-medium text-white">Entenda Nossa Abordagem</button>
-                <button onclick="document.getElementById('contato').scrollIntoView({behavior:'smooth'})" class="border border-navy text-white px-8 py-3 rounded-lg font-medium">Fale Conosco</button>
+            <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#solucao" class="btn-primary px-8 py-3 rounded-lg font-medium text-white inline-block text-center">Entenda Nossa Abordagem</a>
+                <a href="#contato" class="border border-navy text-white px-8 py-3 rounded-lg font-medium inline-block text-center hover:bg-white hover:text-corp-deep transition-colors">Fale Conosco</a>
             </div>
         </header>
 
@@ -145,7 +91,7 @@
             <div class="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Card 1 -->
                 <div class="p-8 rounded-2xl border border-corp-border hover:border-corp-primary transition-all group">
-                    <div class="w-12 h-12 bg-blue-50 text-corp-primary rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-corp-primary group-hover:text-white transition-colors">🛡️</div>
+                    <div aria-hidden="true" class="w-12 h-12 bg-blue-50 text-corp-primary rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-corp-primary group-hover:text-white transition-colors">🛡️</div>
                     <h3 class="text-xl font-bold text-corp-deep mb-3">Segurança Inviolável</h3>
                     <p class="text-corp-muted text-sm leading-relaxed">
                         Implementamos as mais recentes técnicas de segurança de código e ambiente, garantindo que sua aplicação seja um forte, não um risco.
@@ -153,7 +99,7 @@
                 </div>
                 <!-- Card 2 -->
                 <div class="p-8 rounded-2xl border border-corp-border hover:border-corp-accent transition-all group">
-                    <div class="w-12 h-12 bg-orange-50 text-corp-accent rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-corp-accent group-hover:text-white transition-colors">⚡</div>
+                    <div aria-hidden="true" class="w-12 h-12 bg-orange-50 text-corp-accent rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-corp-accent group-hover:text-white transition-colors">⚡</div>
                     <h3 class="text-xl font-bold text-corp-deep mb-3">IA Generativa Única</h3>
                     <p class="text-corp-muted text-sm leading-relaxed">
                         Projetos moldados para sua necessidade real. Criamos IAs que entendem o seu contexto e agregam valor direto ao cliente final.
@@ -161,7 +107,7 @@
                 </div>
                 <!-- Card 3 -->
                 <div class="p-8 rounded-2xl border border-corp-border hover:border-corp-deep transition-all group">
-                    <div class="w-12 h-12 bg-slate-50 text-corp-deep rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-corp-deep group-hover:text-white transition-colors">📈</div>
+                    <div aria-hidden="true" class="w-12 h-12 bg-slate-50 text-corp-deep rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:bg-corp-deep group-hover:text-white transition-colors">📈</div>
                     <h3 class="text-xl font-bold text-corp-deep mb-3">Foco Total em ROI</h3>
                     <p class="text-corp-muted text-sm leading-relaxed">
                         Todo projeto nasce com uma meta clara: retorno sobre investimento. Transformamos custo de TI em investimento estratégico.
@@ -181,14 +127,14 @@
                     </p>
                     <div class="space-y-6">
                         <div class="flex items-start">
-                            <div class="mt-1 text-corp-primary mr-4">⬥</div>
+                            <div class="mt-1 text-corp-primary mr-4" aria-hidden="true">⬥</div>
                             <div>
                                 <h4 class="font-bold text-corp-deep">Privacidade de Dados (LGPD+)</h4>
                                 <p class="text-sm text-corp-muted">Modelos que respeitam a soberania dos dados da sua empresa.</p>
                             </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="mt-1 text-corp-primary mr-4">⬥</div>
+                            <div class="mt-1 text-corp-primary mr-4" aria-hidden="true">⬥</div>
                             <div>
                                 <h4 class="font-bold text-corp-deep">Arquitetura de Defesa Profunda</h4>
                                 <p class="text-sm text-corp-muted">Segurança injetada na aplicação, no transporte e no armazenamento.</p>
@@ -202,7 +148,7 @@
                         <p class="text-xs text-corp-muted">Comparativo: Okaporanga vs. Desenvolvimento Padrão</p>
                     </div>
                     <div class="chart-container">
-                        <canvas id="radarChart"></canvas>
+                        <canvas id="radarChart" aria-label="Gráfico de Radar mostrando comparativo de Segurança e Inovação" role="img"></canvas>
                     </div>
                 </div>
             </div>
@@ -216,39 +162,39 @@
                     <p class="text-corp-muted mt-4">Simule como a eficiência da nossa IA Generativa impacta sua operação.</p>
                 </div>
 
-                <div class="bg-white rounded-2xl shadow-xl border border-brand-border overflow-hidden">
+                <div class="bg-white rounded-2xl shadow-xl border border-corp-border overflow-hidden">
                 <div class="grid grid-cols-1 md:grid-cols-3">
                     
                     <!-- Controls -->
-                    <div class="p-8 bg-stone-100 border-r border-brand-border">
-                        <h3 class="font-bold text-brand-text mb-6 flex items-center">
-                            <span class="mr-2">🎛️</span> Parâmetros do Projeto
+                    <div class="p-8 bg-stone-100 border-r border-corp-border">
+                        <h3 class="font-bold text-corp-text mb-6 flex items-center">
+                            <span class="mr-2" aria-hidden="true">🎛️</span> Parâmetros do Projeto
                         </h3>
                         
                         <div class="mb-6">
-                            <label class="block text-xs font-bold text-brand-muted uppercase mb-2">Tamanho da Equipe</label>
-                            <input type="range" id="teamSize" min="5" max="100" value="20" class="w-full h-2 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-brand-accent">
-                            <div class="flex justify-between text-xs text-brand-secondary mt-1">
+                            <label for="teamSize" class="block text-xs font-bold text-corp-muted uppercase mb-2">Tamanho da Equipe</label>
+                            <input type="range" id="teamSize" min="5" max="100" value="20" class="w-full h-2 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-corp-accent" aria-label="Ajustar tamanho da equipe">
+                            <div class="flex justify-between text-xs text-corp-muted mt-1">
                                 <span>5 pessoas</span>
-                                <span id="teamSizeVal" class="font-bold text-brand-accent">20</span>
+                                <span id="teamSizeVal" class="font-bold text-corp-accent">20</span>
                                 <span>100 pessoas</span>
                             </div>
                         </div>
 
                         <div class="mb-6">
-                            <label class="block text-xs font-bold text-brand-muted uppercase mb-2">Processos Automatizáveis (%)</label>
-                            <input type="range" id="automationLevel" min="10" max="90" value="40" class="w-full h-2 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-brand-accent">
-                            <div class="flex justify-between text-xs text-brand-secondary mt-1">
+                            <label for="automationLevel" class="block text-xs font-bold text-corp-muted uppercase mb-2">Processos Automatizáveis (%)</label>
+                            <input type="range" id="automationLevel" min="10" max="90" value="40" class="w-full h-2 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-corp-accent" aria-label="Ajustar nível de automação">
+                            <div class="flex justify-between text-xs text-corp-muted mt-1">
                                 <span>10%</span>
-                                <span id="autoLevelVal" class="font-bold text-brand-accent">40%</span>
+                                <span id="autoLevelVal" class="font-bold text-corp-accent">40%</span>
                                 <span>90%</span>
                             </div>
                         </div>
 
-                        <div class="mt-8 p-4 bg-white rounded-lg border border-brand-border">
-                            <div class="text-sm text-brand-muted mb-1">Economia Estimada/Ano</div>
+                        <div class="mt-8 p-4 bg-white rounded-lg border border-corp-border">
+                            <div class="text-sm text-corp-muted mb-1">Economia Estimada/Ano</div>
                             <div id="roiValue" class="text-2xl font-serif font-bold text-green-700">R$ 384.000</div>
-                            <div class="text-xs text-brand-secondary mt-2 leading-tight">
+                            <div class="text-xs text-corp-muted mt-2 leading-tight">
                                 *Baseado em média salarial de mercado e recuperação de horas produtivas.
                             </div>
                         </div>
@@ -257,10 +203,10 @@
                     <!-- Visualization -->
                     <div class="col-span-2 p-8 flex flex-col justify-center">
                         <div class="chart-container">
-                            <canvas id="roiChart"></canvas>
+                            <canvas id="roiChart" aria-label="Gráfico de Barras mostrando Simulador de ROI" role="img"></canvas>
                         </div>
-                        <p class="text-center text-sm text-brand-secondary mt-4">
-                            Comparativo: Software Tradicional vs. <span class="text-brand-accent font-bold">Okaporanga AI-Enhanced</span>
+                        <p class="text-center text-sm text-corp-muted mt-4">
+                            Comparativo: Software Tradicional vs. <span class="text-corp-accent font-bold">Okaporanga AI-Enhanced</span>
                         </p>
                     </div>
                 </div>
@@ -270,7 +216,7 @@
 
         <!-- CTA SECTION -->
         <section id="contato" class="py-24 bg-corp-deep relative overflow-hidden">
-            <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0 opacity-10" aria-hidden="true">
                 <div class="grid grid-cols-12 h-full">
                     <div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div><div class="border-r border-white"></div>
                 </div>
@@ -279,12 +225,12 @@
                 <h2 class="text-4xl lg:text-5xl font-extrabold text-white mb-8">Pronto para elevar o padrão tecnológico do seu negócio?</h2>
                 <p class="text-blue-200 text-xl mb-12">Agende uma consultoria técnica com nossos especialistas em software e IA.</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <button class="bg-corp-accent hover:bg-orange-700 text-white px-10 py-5 rounded-xl font-bold text-lg transition-all transform hover:scale-105">
+                    <a href="mailto:contato@okaporanga.com" class="bg-corp-accent hover:bg-orange-700 text-white px-10 py-5 rounded-xl font-bold text-lg transition-all transform hover:scale-105 inline-block text-center">
                         Agendar Diagnóstico Gratuito
-                    </button>
-                    <button class="bg-transparent border-2 border-white text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-white hover:text-corp-deep transition-all">
+                    </a>
+                    <a href="#solucao" class="bg-transparent border-2 border-white text-white px-10 py-5 rounded-xl font-bold text-lg hover:bg-white hover:text-corp-deep transition-all inline-block text-center">
                         Ver Case Studies
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
@@ -294,42 +240,32 @@
     <footer class="bg-white py-12 border-t border-corp-border">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
             <div class="flex items-center space-x-2 mb-6 md:mb-0">
-                <div class="w-6 h-6 bg-corp-primary rounded flex items-center justify-center text-white font-bold text-xs">O</div>
-                <span class="text-lg font-bold text-corp-deep uppercase tracking-tighter">Okaporanga</span>
+                <span class="text-lg text-corp-deep tracking-tighter"><span class="font-bold">Oka</span>poranga</span>
             </div>
-            <p class="text-corp-muted text-sm">&copy; 2024 Okaporanga Engenharia. IA Responsável. Software Único.</p>
+            <p class="text-corp-muted text-sm">&copy; 2026 Okaporanga Engenharia. IA Responsável. Software Único.</p>
             <div class="flex space-x-6 mt-6 md:mt-0 text-sm font-medium text-corp-text">
-                <a href="#" class="hover:text-corp-accent">Serviços</a>
-                <a href="#" class="hover:text-corp-accent">Segurança</a>
-                <a href="#" class="hover:text-corp-accent">Privacidade</a>
+                <a href="#solucao" class="hover:text-corp-accent">Serviços</a>
+                <a href="#seguranca" class="hover:text-corp-accent">Segurança</a>
+                <a href="#contato" class="hover:text-corp-accent">Privacidade</a>
             </div>
         </div>
     </footer>
 
-    <!-- Logic -->
     <script>
         const state = {
             teamSize: 20,
             automationLevel: 40,
-            avgSalary: 8000, // Estimativa de custo mensal por funcionário
-            radarMode: 'standard' // 'standard' or 'complex'
+            avgSalary: 8000, 
+            radarMode: 'standard' 
         };
 
-        // DOM Elements
         const teamSizeSlider = document.getElementById('teamSize');
         const teamSizeVal = document.getElementById('teamSizeVal');
         const autoLevelSlider = document.getElementById('automationLevel');
         const autoLevelVal = document.getElementById('autoLevelVal');
         const roiDisplay = document.getElementById('roiValue');
 
-        // Smooth Scroll
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // --- CHARTS ---
-
-        // RADAR CHART: Security vs Innovation
+        // RADAR CHART
         const ctxRadar = document.getElementById('radarChart').getContext('2d');
         const radarChart = new Chart(ctxRadar, {
             type: 'radar',
@@ -372,16 +308,12 @@
             }
         });
 
-        // BAR CHART: ROI SIMULATOR
-       let roiChartInstance = null;
+        // BAR CHART: ROI
+        let roiChartInstance = null;
 
         function calculateROI() {
-            // Formula Simplificada: 
-            // Custo Total Equipe = TeamSize * AvgSalary * 12
-            // Ganho de Eficiência = Custo Total * (AutomationLevel * 0.4 efficiency_factor)
             const annualCost = state.teamSize * state.avgSalary * 12;
-            const savings = annualCost * (state.automationLevel / 100) * 0.4; // 0.4 is the efficiency factor of AI
-            
+            const savings = annualCost * (state.automationLevel / 100) * 0.4; 
             return Math.floor(savings);
         }
 
@@ -389,18 +321,17 @@
             const savings = calculateROI();
             roiDisplay.innerText = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 }).format(savings);
             
-            // Update Chart Data
-            const baseEfficiency = 100; // Baseline
-            const newEfficiency = 100 + (state.automationLevel * 0.8); // Visual representation index
+            if (!roiChartInstance) return;
+            const baseEfficiency = 100; 
+            const newEfficiency = 100 + (state.automationLevel * 0.8); 
 
-            roiChartInstance.data.datasets[0].data = [baseEfficiency, baseEfficiency]; // Traditional
-            roiChartInstance.data.datasets[1].data = [baseEfficiency, newEfficiency]; // Okaporanga
+            roiChartInstance.data.datasets[0].data = [baseEfficiency, baseEfficiency]; 
+            roiChartInstance.data.datasets[1].data = [baseEfficiency, newEfficiency]; 
             roiChartInstance.update();
         }
 
         function initRoiChart() {
             const ctx = document.getElementById('roiChart').getContext('2d');
-            
             const data = {
                 labels: ['Capacidade Atual', 'Capacidade Projetada'],
                 datasets: [
@@ -441,7 +372,7 @@
                         y: {
                             beginAtZero: true,
                             grid: { display: false },
-                            display: false // Hide axis for cleaner UI
+                            display: false 
                         },
                         x: {
                             grid: { display: false }
@@ -451,9 +382,9 @@
             };
 
             roiChartInstance = new Chart(ctx, config);
+            updateROIDisplay();
         }
 
-        // Event Listeners
         teamSizeSlider.addEventListener('input', (e) => {
             state.teamSize = parseInt(e.target.value);
             teamSizeVal.innerText = state.teamSize;
@@ -466,12 +397,9 @@
             updateROIDisplay();
         });
 
-        // Initialize Everything on Load
         window.addEventListener('load', () => {
             initRoiChart();
-            updateROIDisplay(); // Initial calc
         });
-
     </script>
 </body>
 </html>

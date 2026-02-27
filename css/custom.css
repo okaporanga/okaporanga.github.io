@@ -1,0 +1,66 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+/* Estilos personalizados para o site */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #F8FAFC;
+    color: #1E293B;
+    font-family: 'Inter', sans-serif;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 650px;
+    margin: auto;
+    height: 320px;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #1E40AF 0%, #EA580C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn-primary {
+    background: #1E40AF;
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background: #1e3a8a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(30, 64, 175, 0.3);
+}
+
+.nav-link {
+    position: relative;
+    text-decoration: none; 
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #EA580C;
+    transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+
+header {
+    background: linear-gradient(rgba(0,31,63,0.7), rgba(0,31,63,0.7)), url('images/kayaking.jpg') center/cover no-repeat;
+}
